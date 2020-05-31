@@ -24,7 +24,7 @@ import "bootstrap/dist/css/bootstrap.css";
     front: () => cube.setCameraProjectionMatrix(cube.frontView()),
     onepoint: () => cube.setCameraProjectionMatrix(cube.onePointProjection(0.5)),
     angled: () => cube.setCameraProjectionMatrix(cube.angledProjection(15, 1)),
-    reset: () => cube.setupScene(document.body, "#ff0000"),
+    reset: () => cube.setupScene(document.getElementById("canvas"), "#ff0000"),
     multi: () => cube.multicolorCube(),
     defaultCube: () => cube.colorCube("#ff0000"),
     wire: () => cube.wireframeCube("#ff0000"),

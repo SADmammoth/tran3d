@@ -3,11 +3,14 @@ import { cos, sin, multiply, matrix } from "mathjs";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default class Cube {
-  setupScene = (root, cubeColor, width, height) => {
+  setupScene = (root, cubeColor) => {
+    root.innerHTML = "";
     this.scene = new THREE.Scene();
 
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(window.innerWidth * 0.7, window.innerHeight*0.7);
+    let width = 574;
+    let height = 539.7;
+    this.renderer.setSize(width, height);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     root.appendChild(this.renderer.domElement);
@@ -15,7 +18,7 @@ export default class Cube {
     //* Camera
     this.camera = new THREE.PerspectiveCamera(
       45,
-      window.innerWidth / window.innerHeight,
+      width / height,
       0.1,
       1000
     );
@@ -91,7 +94,6 @@ export default class Cube {
   };
 
   setTransfromationMatrix(matrix) {
-    console.log(matrix.flat());
     this.cube.applyMatrix4(new THREE.Matrix4().set(...matrix.flat()));
     this.renderer.render(this.scene, this.camera);
   }
@@ -167,7 +169,7 @@ export default class Cube {
       [1, 0, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 0, 0],
-      [0, 0, 0, 2],
+      [0, 0, 0, 1],
     ].flat();
   };
 
@@ -222,7 +224,7 @@ export default class Cube {
     });
   };
 
-  
+
   flatCube = (color) => {
     this.cube.material = new THREE.MeshBasicMaterial({
       color,
