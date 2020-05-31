@@ -2,8 +2,8 @@
   "name": "threed",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "test",
     "dev": "webpack-dev-server --mode development --watch --no-inline",
     "build": "webpack --mode production"
@@ -30,6 +30,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "mathjs": "^7.0.0",
     "three": "^0.116.1"
   }

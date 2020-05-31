@@ -4,18 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>3D Transformations</title>
     <style>
-      canvas {
-        height: 90vh;
-        width: 90vw;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid black;
+      
+      button {
+        margin: 5px !important;
+        display: block;
       }
     </style>
   </head>
-  <body style="margin: 0;"></body>
+  <body style="margin: 0; position: relative;">
+    <h1  style="margin-top:30px; margin: 0 auto; width: 30vw;">3D Transformations</h1>
+    <div id="canvas" style="position: absolute; left: 1vw; top: 15vh; width: 70vw; height: 70vh; overflow: hidden;"></div>
+    <div
+      class="menu border p-1"
+      style="overflow-y: auto; position: absolute; right: 1vw; top: 15vh; width: 25vw; height: 70vh; display: flex; flex-direction: column;"
+    >
+    <button class="btn btn-primary action" value="reset">
+      Reset scene (0)
+    </button>
+      <div class="cube">
+        <h3>Cube</h3>
+        <button class="btn btn-primary action" value="flat">
+          Flat cube (N)
+        </button>
+        <button class="btn btn-primary action" value="multi">
+          Multicolor cube (C)
+        </button>
+        <button class="btn btn-primary action" value="wire">
+          Wireframe cube (B)
+        </button>
+        <button class="btn btn-primary action" value="defaultCube">
+          Default cube (V)
+        </button>
+      </div>
+      <div class="moves">
+        <h3>Move</h3>
+        <button class="btn btn-primary action" value="left">
+          Left
+        </button>
+        <button class="btn btn-primary action" value="right">
+          Right
+        </button>
+        <button class="btn btn-primary action" value="forward">
+          Forward
+        </button>
+        <button class="btn btn-primary action" value="back">
+          Back
+        </button>
+        <button class="btn btn-primary action" value="up">
+          Up (W)
+        </button>
+        <button class="btn btn-primary action" value="down">
+          Down (S)
+        </button>
+      </div>
+      <div class="rotates">
+        <h3>Rotate</h3>
+        <button class="btn btn-primary action" value="rotateClockwiseY">
+          Clockwise rotate Y (E)
+        </button>
+        <button class="btn btn-primary action" value="rotateCounterClockwiseY">
+          Counter clockwise rotate Y (Q)
+        </button>
+        <button class="btn btn-primary action" value="rotateClockwiseX">
+          Clockwise rotate X (F)
+        </button>
+        <button class="btn btn-primary action" value="rotateCounterClockwiseX">
+          Counter clockwise rotate (R)
+        </button>
+        <button class="btn btn-primary action" value="rotateClockwiseZ">
+          Clockwise rotate Z (X)
+        </button>
+        <button class="btn btn-primary action" value="rotateCounterClockwiseZ">
+          Counter clockwise rotate Z (Z)
+        </button>
+      </div>
+      <div class="scales">
+        <h3>Scale</h3>
+        <button class="btn btn-primary action" value="scaleup">
+          Scale up (+)
+        </button>
+        <button class="btn btn-primary action" value="scaledown">
+          Scale down (-)
+        </button>
+      </div>
+      <div class="projections">
+        <h3>Project</h3>
+        <button class="btn btn-primary action" value="front">
+          Front projection (1)
+        </button>
+        <button class="btn btn-primary action" value="onepoint">
+          One point projection (2)
+        </button>
+        <button class="btn btn-primary action" value="angled">
+          Angled point projection (3)
+        </button>
+      </div>
+      </div>
+    </div>
+  </body>
 </html>

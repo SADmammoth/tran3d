@@ -3,11 +3,11 @@ import { cos, sin, multiply, matrix } from "mathjs";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default class Cube {
-  setupScene = (root, cubeColor) => {
+  setupScene = (root, cubeColor, width, height) => {
     this.scene = new THREE.Scene();
 
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(window.innerWidth * 0.7, window.innerHeight*0.7);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     root.appendChild(this.renderer.domElement);
