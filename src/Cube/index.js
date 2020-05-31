@@ -71,16 +71,10 @@ export default class Cube {
     light.position.z += 10;
     light.castShadow = true;
     this.scene.add(ambientLight, light);
+
+    //* Controls
     var controls = new OrbitControls(this.camera, this.renderer.domElement);
-    // controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-    // controls.dampingFactor = 0.05;
 
-    // controls.screenSpacePanning = false;
-
-    // controls.minDistance = 100;
-    // controls.maxDistance = 500;
-
-    // controls.maxPolarAngle = Math.PI / 2;
 
     let animate = () => {
       requestAnimationFrame(animate);
@@ -102,7 +96,8 @@ export default class Cube {
     this.camera.position.x = 0;
     this.camera.position.y = 0;
     this.camera.position.z = 0;
-    this.camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix.flat());
+    this.camera.projectionMatrix =
+      new THREE.Matrix4().fromArray(matrix.flat());
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -178,7 +173,7 @@ export default class Cube {
       [1, 0, 0, 0],
       [0, 1, 0, 0],
       [0, 0, 0, r],
-      [0, 0, 0, 2],
+      [0, 0, 0, 1],
     ].flat();
   };
 
@@ -186,11 +181,14 @@ export default class Cube {
     let l = distance;
     let al = THREE.Math.degToRad(angle);
 
+    let a = l * cos(al);
+    let b = l * sin(al);
+
     return [
       [1, 0, 0, 0],
       [0, 1, 0, 0],
-      [l * cos(al), l * sin(al), 0, 0],
-      [0, 0, 0, 2],
+      [a, b, 0, 0],
+      [0, 0, 0, 1],
     ].flat();
   };
 
@@ -231,36 +229,4 @@ export default class Cube {
       side: THREE.DoubleSide,
     });
   };
-
-  // function move(affMatrix) {
-  //   let cubePos = cube.getWorldPosition(new THREE.Vector3(0, 0, 0));
-  //   let mat = math.matrix(affMatrix);
-  //   console.log(
-  //     math.multiply(
-  //       mat.subset(math.index([0, 1, 2], [0, 1, 2])),
-  //       cubePos.toArray()
-  //     ),
-  //     mat.subset(math.index([0, 1, 2], [3]))
-  //   );
-  //   let newPos = math
-  //     .add(
-  //       math.transpose(
-  //         math.multiply(
-  //           mat.subset(math.index([0, 1, 2], [0, 1, 2])),
-  //           cubePos.toArray()
-  //         )
-  //       ),
-  //       mat
-  //         .subset(math.index([0, 1, 2], [3]))
-  //         .toArray()
-  //         .flat()
-  //     )
-  //     .toArray();
-  //   console.log(cubePos.toArray(), newPos);
-  //   cube.position.set(0, 0, 0);
-  //   cube.translateX(newPos[0]);
-  //   cube.translateY(newPos[1]);
-  //   cube.translateZ(newPos[2]);
-  //   renderer.render(scene, camera);
-  // }
 }

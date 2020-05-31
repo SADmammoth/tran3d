@@ -21,6 +21,8 @@ import "bootstrap/dist/css/bootstrap.css";
     rotateCounterClockwiseZ: () => cube.setTransfromationMatrix(cube.rotateZ(5, 0, 0)),
     scaleup: () => cube.setTransfromationMatrix(cube.scale(2, 2, 2)),
     scaledown: () => cube.setTransfromationMatrix(cube.scale(0.5, 0.5, 0.5)),
+    reflectOY: () => cube.setTransfromationMatrix(cube.scale(-1, 1, 1)),
+    reflectOX: () => cube.setTransfromationMatrix(cube.scale(1, -1, 1)),
     front: () => cube.setCameraProjectionMatrix(cube.frontView()),
     onepoint: () => cube.setCameraProjectionMatrix(cube.onePointProjection(0.5)),
     angled: () => cube.setCameraProjectionMatrix(cube.angledProjection(15, 1)),
@@ -101,10 +103,12 @@ import "bootstrap/dist/css/bootstrap.css";
       event.preventDefault();
       actions.front()
     }
+
     if (event.key == "2") {
       event.preventDefault();
       actions.onepoint()
     }
+
     if (event.key == "3") {
       event.preventDefault();
       actions.angled()
